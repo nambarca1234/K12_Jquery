@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+</style>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Catelary</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody id="view">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<script>
+    let listProduct = [
+        {
+            id: 1,
+            name: 'Oppe',
+            catelary: 1,
+            price: 2525
+        },
+        {
+            id: 2,
+            name: 'Oppe',
+            catelary: 1,
+            price: 2525
+        },
+        {
+            id: 3,
+            name: 'Oppe',
+            catelary: 1,
+            price: 2525
+        },
+        {
+            id: 4,
+            name: 'Oppe',
+            catelary: 1,
+            price: 2525
+        },
+        {
+            id: 5,
+            name: 'Oppe',
+            catelary: 1,
+            price: 2525
+        }
+    ]
+    $(document).ready(function () {
+        intit()
+    })
+
+    function intit() {
+        let view = $('#view')
+        let str = ''
+        for (let i = 0; i < listProduct.length; i++) {
+            str += '<tr>' +
+                '<td>' + listProduct[i].id + '</td>' +
+                '<td>' + listProduct[i].name + '</td>' +
+                '<td>' + listProduct[i].catelary + '</td>' +
+                '<td>' + listProduct[i].price + '</td>' +
+                '</tr>';
+        }
+        view.append(str)
+    }
+
+</script>
+</body>
+</html>

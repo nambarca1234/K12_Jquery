@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+</style>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+    </tr>
+    </thead>
+    <tbody id="view">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+    let data = [
+        {
+            id: 1,
+            name: 'le van C',
+            age: 18,
+            address: 'Ha Noi'
+        },
+        {
+            id: 2,
+            name: 'le van A',
+            age: 18,
+            address: 'Ha Noi'
+        },
+        {
+            id: 3,
+            name: 'le van D',
+            age: 18,
+            address: 'Vinh Phuc'
+        },
+        {
+            id: 4,
+            name: 'le van B',
+            age: 18,
+            address: 'Ha Tinh'
+        },
+        {
+            id: 5,
+            name: 'le van S',
+            age: 18,
+            address: 'Ha Tay'
+        }
+    ]
+    $(document).ready(function () {
+        init()
+    })
+
+    function init() {
+        let view = $('#view')
+        let str = ''
+        for (let i = 0; i < data.length; i++) {
+            str += '<tr>' +
+                '<td>' + data[i].id + '</td>' +
+                '<td>' + data[i].name + '</td>' +
+                '<td>' + data[i].age + '</td>' +
+                '<td>' + data[i].address + '</td>' +
+                '</tr>';
+        }
+        // listCustomer.forEach((d, i) => {
+        //     let html = '<tr>';
+        //     html += '<td>' + d.id + '</td>'
+        //     html += '<td>' + d.name + '</td>'
+        //     html += '<td>' + d.age + '</td>'
+        //     html += '<td>' + d.address + '</td>'
+        //     html += '<tr>';
+        //     $("#view").append(html);
+        // })
+        view.append(str)
+    }
+</script>
+</body>
+</html>

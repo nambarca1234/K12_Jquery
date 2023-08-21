@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    table{
+        border: green;
+    }
+    td {
+        height: 40px;
+        width: 40px;
+        border: 1px solid green;
+        font-size: 40px;
+    }
+</style>
+
+<body>
+<table id="gameBoard">
+    <tr>
+        <td onclick="view(this, '1')"></td>
+        <td onclick="view(this, '2')"></td>
+        <td onclick="view(this, '3')"></td>
+    </tr>
+    <tr>
+        <td onclick="view(this, '4')"></td>
+        <td onclick="view(this, '5')"></td>
+        <td onclick="view(this, '6')"></td>
+    </tr>
+    <tr>
+        <td onclick="view(this, '7')"></td>
+        <td onclick="view(this, '8')"></td>
+        <td onclick="view(this, '9')"></td>
+    </tr>
+</table>
+<script>
+    let x = [];
+    let o = [];
+    let i = 0;
+    let j = 0;
+    let check = true;
+    let count=0;
+
+    function view(cell, str) {
+        if (check) {
+            if ($(cell).text() === "") {
+                $(cell).text("X");
+            }
+            i += 1;
+            x[i] = parseInt(str);
+            if (checkWin(x)) {
+                alert('X win');
+                reset();
+            } else {
+                check = false;
+            }
+        } else {
+            if ($(cell).text() === "") {
+                $(cell).text("O");
+            }
+            j += 1;
+            o[j] = parseInt(str);
+            if (checkWin(o)) {
+                alert('O win');
+                reset();
+            } else {
+                check = true;
+            }
+        }
+
+        count += 1;
+        if (count == 9) {
+            alert('Hoa')
+            reset();
+        }
+    }
+
+    let kq1 = [1, 2, 3];
+    let kq2 = [4, 5, 6];
+    let kq3 = [7, 8, 9];
+    let kq4 = [1, 4, 7];
+    let kq5 = [2, 5, 8];
+    let kq6 = [3, 6, 9];
+    let kq7 = [1, 5, 9];
+    let kq8 = [3, 5, 7];
+
+    function checkIn(arr, kq) {
+        for (let k = 0; k < kq.length; k++) {
+            let found = false;
+            for (let l = 0; l < arr.length; l++) {
+                if (kq[k] === arr[l]) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function checkWin(arr) {
+        if (
+            checkIn(arr, kq1) || checkIn(arr, kq2) || checkIn(arr, kq3) ||
+            checkIn(arr, kq4) || checkIn(arr, kq5) || checkIn(arr, kq6) ||
+            checkIn(arr, kq7) || checkIn(arr, kq8)
+        ) {
+            return true;
+        }
+        return false;
+    }
+
+    function reset() {
+        $("#gameBoard td").text("");
+        x = [];
+        o = [];
+        i = 0;
+        j = 0;
+        check = true;
+        count=0;
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+<input id ="test" value="10">
+<button id="b">click</button>
+</body>
+<script>
+    let x=document.getElementById("test")
+    let y=$('#test').val()           //giong x nhung khai bao kieu jquery
+    $(document).ready(function (){
+        $('#b').click(function (){
+            //document.getElementById("test").value=1000
+            $('#test').val(1000);
+        })
+
+    })
+</script>
+</html>
