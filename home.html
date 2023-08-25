@@ -78,7 +78,40 @@
     ]
     $(document).ready(function () {
         init()
+        getLitsCustomer();
+        // postCustomer();
     })
+function getLitsCustomer(){
+        $.ajax({
+            url:'http://localhost:8088/api/v1/customer/getAll',
+            method:'GET',
+            contentType:'application/json',
+            success:function (resp){
+                console.log(resp)
+            }
+
+        })
+}
+function postCustomer(){
+let cus={
+        cusid: 10,
+        "cusname": "Nam",
+        "birthday": "07-03-1995",
+        "phone": "0967489396",
+        "aid": 1
+    }
+$.ajax({
+    url:'http://localhost:8088/api/v1/customer/save',
+    method:'POST',
+    contentType:'application/json',
+    data:JSON.stringify(cus),
+    success:function (resp){
+        console.log(resp)
+    }, error:function (err){
+        console.log(err)
+    }
+})
+}
 
     function init() {
         let view = $('#view')
